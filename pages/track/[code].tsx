@@ -154,9 +154,7 @@ export default function FirstPost({ track }: { track: TrackType }) {
                       ) : null}
                       <div className="relative flex space-x-3">
                         <div>
-                          <span
-                            className={"h-10 w-10 rounded-full flex items-center justify-center ring-8 ring-white mt-2 " + colors[chooseType(item.status)]}
-                          >
+                          <span className={`h-10 w-10 rounded-full flex items-center justify-center ring-8 ring-white mt-2 ${colors[chooseType(item.status)]}`}>
                             {icons[chooseType(item.status)]}
                           </span>
                         </div>
