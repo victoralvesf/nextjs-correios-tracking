@@ -138,7 +138,7 @@ export default function FirstPost({ track }: { track: TrackType }) {
               </div>
               <div className="mt-2 lg:mt-0">
                 <span className="font-medium text-base text-gray-900">Última atualização:</span>
-                <p className="text-base text-gray-600">{track.postedAt}</p>
+                <p className="text-base text-gray-600">{track.updatedAt}</p>
               </div>
             </div>
           </div>
