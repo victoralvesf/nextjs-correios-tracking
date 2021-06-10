@@ -13,7 +13,7 @@ import {
 import Link from 'next/link'
 import Head from "next/head"
 
-import { TrackType, getPackageStatus } from '../service/trackService'
+import { TrackType, getPackageStatus } from '../../service/trackService'
 
 const icons = {
   'postado': <ArchiveIcon className="h-5 w-5 text-white" />,
