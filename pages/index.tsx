@@ -22,12 +22,12 @@ export default function Home() {
         </Head>
 
         <img
-          className="mx-auto h-12 w-auto"
+          className="mx-auto h-8 lg:h-12 w-auto"
           src="/tracking.svg"
           alt="Pacote"
         />
 
-        <h2 className="mt-4 text-center text-3xl font-extrabold text-gray-700 dark:text-white">Rastreie sua encomenda</h2>
+        <h2 className="mt-4 mb-4 text-center text-3xl lg:text-5xl font-extrabold text-gray-700 dark:text-white">Rastreie sua encomenda</h2>
 
         <div className="w-full bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg divide-y divide-gray-200 mt-8">
           <div className="px-4 py-5 sm:p-6 lg:p-8">
