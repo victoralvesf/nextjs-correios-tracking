@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ChevronRightIcon, XCircleIcon } from '@heroicons/react/solid';
+import { ChevronRightIcon, XIcon } from '@heroicons/react/solid';
 import { useEffect, useState, memo } from 'react';
 
 const RecentSearchs = memo(() => {
@@ -40,18 +40,18 @@ const RecentSearchs = memo(() => {
             {recentCodes.map((code, index) => (
               <div className="relative" key={index}>
                 <button
-                  className="absolute z-10 right-2 top-2 rounded-full cursor-pointer outline-none focus:outline-none"
+                  className="py-1 px-1 absolute z-10 right-2 top-2 rounded-full cursor-pointer outline-none focus:outline-none hover:bg-gray-200 dark:hover:bg-black"
                   title={`Remover o objeto ${code} dos recentes`}
                   onClick={() => removeCodeFromRecents(code)}
                 >
-                  <XCircleIcon
-                    className="flex-shrink-0 h-5 w-5 text-red-500 hover:text-red-600"
+                  <XIcon
+                    className="flex-shrink-0 h-4 w-4 text-gray-600 dark:text-white"
                     aria-hidden="true"
                   />
                 </button>
                 <Link href={`/track/${code}`} >
                   <li
-                    className="flex items-center justify-start font-medium text-sm lg:text-base relative rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-500 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 dark:text-white cursor-pointer"
+                    className="flex items-center justify-start text-gray-600 font-medium text-sm lg:text-base relative rounded-lg border border-white dark:border-gray-800 bg-white dark:bg-gray-800 px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-500 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 dark:text-white cursor-pointer shadow"
                     title={`Rastrear objeto ${code}`}
                   >
                     <span>{code}</span>
