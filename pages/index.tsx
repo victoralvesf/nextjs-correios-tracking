@@ -2,6 +2,8 @@ import { FormEvent, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
+import RecentSearchs from '../components/RecentSearchs'
+
 export default function Home() {
   const [trackCode, setTrackCode] = useState('');
   const [btnDisabled, setBtnDisabled] = useState(false)
@@ -51,6 +53,8 @@ export default function Home() {
             </form>
           </div>
         </div>
+
+        <RecentSearchs />
       </div>
     </div>
   )
