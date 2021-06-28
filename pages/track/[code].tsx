@@ -10,6 +10,7 @@ import {
   ClipboardCheckIcon
 } from '@heroicons/react/solid'
 import Head from "next/head"
+import { useEffect } from "react"
 
 import { BackButton } from "../../components/BackButton"
 import { PageWrapper } from "../../components/PageWrapper"
@@ -63,11 +64,36 @@ function chooseType(text: string) {
 }
 
 export default function FirstPost({ track }: { track: TrackType }) {
+
+  function saveToLocalStorage(key: string, content: any) {
+    localStorage.setItem(key, JSON.stringify(content))
+  }
+
+  function sendCodeToRecents(code: string) {
+    const localCodes = localStorage.getItem('rastcorreios_recent')
+
+    if (localCodes) {
+      const codes: string[] = JSON.parse(localCodes)
+
+      if (localCodes.indexOf(code) === -1) {
+        codes.push(code)
+
+        saveToLocalStorage('rastcorreios_recent', codes)
+      }
+    } else {
+      saveToLocalStorage('rastcorreios_recent', [code])
+    }
+  }
+
   if (track.isInvalid) {
     return (
       <ErrorStatus track={track} />
     )
   }
+
+  useEffect(() => {
+    sendCodeToRecents(track.code)
+  }, [])
 
   return (
     <>
