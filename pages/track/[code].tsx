@@ -153,12 +153,12 @@ export default function FirstPost({ track }: { track: TrackingType }) {
                           }
                           <h3 className="font-medium text-gray-900 dark:text-white">{item.status}</h3>
                           {item.origin !== null &&
-                            <h4 className="font-light text-sm text-gray-600 dark:text-gray-400">
+                            <h4 className="text-sm text-gray-500 dark:text-gray-400">
                               <strong className="font-bold">De:</strong> {item.origin}
                             </h4>
                           }
                           {item.destination !== null &&
-                            <h4 className="font-light text-sm text-gray-600 dark:text-gray-400">
+                            <h4 className="text-sm text-gray-500 dark:text-gray-400">
                               <strong className="font-bold">Para:</strong> {item.destination}
                             </h4>
                           }
