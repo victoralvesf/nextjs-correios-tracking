@@ -1,18 +1,34 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useCallback, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { XCircleIcon } from '@heroicons/react/solid'
 
 import RecentSearchs from '../components/RecentSearchs'
 
 export default function Home() {
   const [trackCode, setTrackCode] = useState('');
   const [btnDisabled, setBtnDisabled] = useState(false)
+  const [isCodeValid, setIsCodeValid] = useState(true)
   const router = useRouter()
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setBtnDisabled(true)
     router.push(`/track/${trackCode}`)
+  }
+
+  const handleChange = useCallback((e: FormEvent<HTMLInputElement>) => {
+    const upCaseText = e.currentTarget.value.toUpperCase()
+    const isTextValid = isValidOrderCode(upCaseText)
+
+    setIsCodeValid(isTextValid)
+    setBtnDisabled(!isTextValid)
+
+    setTrackCode(upCaseText)
+  }, [trackCode])
+
+  function isValidOrderCode(code: string): boolean {
+    return /^[A-Z]{2}[0-9]{9}[A-Z]{2}$/.test(code)
   }
 
   return (
@@ -40,8 +56,16 @@ export default function Home() {
                 className="shadow-sm dark:text-indigo-500 focus:ring-indigo-500 dark:bg-gray-800 focus:border-indigo-500 block w-full text-sm border-gray-300 dark:border-gray-600 rounded-md lg:h-16 lg:text-lg"
                 placeholder="Informe o código de rastreio"
                 value={trackCode}
-                onChange={e => setTrackCode(e.target.value.toUpperCase())}
+                onChange={handleChange}
+                required
               />
+
+              {!isCodeValid &&
+                <div className="flex flex-row items-center mt-4">
+                  <XCircleIcon className="h-6 w-6 text-red-400 mr-2" />
+                  <span className="text-red-400 font-sm">O código informado é inválido!</span>
+                </div>
+              }
 
               <button
                 type="submit"

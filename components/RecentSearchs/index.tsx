@@ -51,7 +51,7 @@ const RecentSearchs = memo(() => {
                 </button>
                 <Link href={`/track/${code}`} >
                   <li
-                    className="flex items-center justify-start text-gray-600 font-medium text-sm lg:text-base relative rounded-lg border border-white dark:border-gray-800 bg-white dark:bg-gray-800 px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-indigo-500 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 dark:text-white cursor-pointer shadow"
+                    className="flex items-center justify-start text-gray-600 font-medium text-sm lg:text-base relative rounded-lg border border-white dark:border-gray-800 bg-white dark:bg-gray-800 px-6 py-5 shadow-sm space-x-3 hover:border-indigo-500 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 dark:text-white cursor-pointer"
                     title={`Rastrear objeto ${code}`}
                   >
                     <span>{code}</span>

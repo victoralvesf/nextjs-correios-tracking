@@ -4,9 +4,9 @@ import { XCircleIcon } from '@heroicons/react/solid'
 import { PageWrapper } from '../PageWrapper'
 import { BackButton } from '../BackButton'
 
-import { TrackType } from '../../service/trackService'
+import { TrackingType } from '../../service/trackService'
 
-export function ErrorStatus({ track }: { track: TrackType }) {
+export function ErrorStatus({ track }: { track: TrackingType }) {
   return (
     <>
       <Head>
