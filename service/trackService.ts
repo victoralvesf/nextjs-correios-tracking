@@ -1,50 +1,23 @@
-import rastrojs from 'rastrojs'
+import { SroCorreios, Tracking } from 'sro-correios'
 
-type TracksType = {
-  locale: string;
-  status: string;
-  observation: string | null;
-  trackedAt: string;
-}
-
-export type TrackType = {
-  isInvalid?: boolean | null;
-  error?: string;
-  code: string;
-  type: string;
-  tracks: TracksType[];
-  isDelivered: boolean;
-  postedAt: string;
-  updatedAt: string;
-}
-
-function capitalize(s: string) {
-  if (typeof s !== 'string') return s
-  return s.charAt(0).toUpperCase() + s.slice(1)
-}
-
-function capitalizeFirstLetters(s: string) {
-  const words = s.split(' ')
-
-  for(let i = 0; i < words.length; i++) {
-    words[i] = capitalize(words[i])
+export type TrackingType = {
+  code: string
+  category?: {
+    name: string | undefined
+    description: string | undefined
   }
-
-  return words.join(' ')
-}
-
-function formatLocale(locale: string) {
-  let words = locale.trim()
-  const length = words.length
-
-  if (words[length - 1] === '/') {
-    words = capitalize(words.substring(0, length - 2))
-  } else {
-    words = capitalize(words)
-    words = words.substring(0, length - 2) + words.slice(length - 2).toUpperCase()
-  }
-
-  return words
+  events?: {
+    locality: string | null
+    status: string
+    origin: string
+    destination: string | null
+    trackedAt: string
+  }[]
+  isDelivered?: boolean
+  postedAt?: string
+  updatedAt?: string
+  isInvalid?: boolean
+  error?: string
 }
 
 function formatDate(data: Date) {
@@ -53,30 +26,26 @@ function formatDate(data: Date) {
   return date.split(' ').join(' - ')
 }
 
-export async function getPackageStatus(code: string) {
-  const [track] = await rastrojs.track(code)
+export async function getPackageStatus(code: string): Promise<TrackingType | Tracking> {
+  const correios = new SroCorreios()
+
+  const [track] = await correios.track(code)
 
   if (track.isInvalid) {
     return track
   }
 
-  const tracks = track.tracks.map(item => {
-    const { locale, observation, status } = item
-
+  const tracks = track.events.map(event => {
     return {
-      locale: formatLocale(locale),
-      observation: capitalize(observation),
-      status: capitalize(status),
-      trackedAt: formatDate(item.trackedAt)
+      ...event,
+      trackedAt: formatDate(event.trackedAt)
     }
   })
 
   return {
-    code: track.code,
-    type: capitalizeFirstLetters(track.type),
-    tracks: tracks.reverse(),
-    isDelivered: track.isDelivered,
+    ...track,
     postedAt: formatDate(track.postedAt),
-    updatedAt: formatDate(track.updatedAt)
+    updatedAt: formatDate(track.updatedAt),
+    events: tracks
   }
 }

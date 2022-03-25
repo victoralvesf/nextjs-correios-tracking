@@ -40,7 +40,7 @@ export default function Home() {
                 className="shadow-sm dark:text-indigo-500 focus:ring-indigo-500 dark:bg-gray-800 focus:border-indigo-500 block w-full text-sm border-gray-300 dark:border-gray-600 rounded-md lg:h-16 lg:text-lg"
                 placeholder="Informe o código de rastreio"
                 value={trackCode}
-                onChange={e => setTrackCode(e.target.value)}
+                onChange={e => setTrackCode(e.target.value.toUpperCase())}
               />
 
               <button
