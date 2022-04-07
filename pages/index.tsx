@@ -44,7 +44,7 @@ export default function Home() {
           <meta name="robots" />
           <meta name="googlebot" />
           <meta name="googlebot" content="notranslate" />
-          <meta name="google-site-verification" content="lFE3UhUXnv1-aDlbr2Qmf8OB721lESi49FcihsNx24A" />
+          <meta name="google-site-verification" content="Vlz-HKkbkphUScD70-KcJMxDqewcsaqQG56o8QzBEbM" />
           <meta name="keywords" content="correios, rastreio, brasil, rastrear correios, encomendas, correios brasil, rastreamento, sro, tracking, api correios, correio, rastreio de pacotes, track" />
         </Head>
 
