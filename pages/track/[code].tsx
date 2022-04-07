@@ -139,9 +139,9 @@ export default function FirstPost({ track }: { track: TrackingType }) {
               {track.events.map((item, index) => (
                 <li key={index}>
                   <div className="relative pb-8">
-                    {index !== track.events.length - 1 ? (
+                    {index !== track.events.length - 1 && (
                       <span className="absolute top-4 left-5 -ml-px h-full w-0.5 bg-gray-200 dark:bg-gray-600" aria-hidden="true" />
-                    ) : null}
+                    )}
                     <div className="relative flex space-x-3">
                       <div>
                         <span className={`h-10 w-10 mr-2 rounded-full flex items-center justify-center ring-8 ring-white dark:ring-gray-800 mt-3 ${colors[chooseType(item.status)]}`}>

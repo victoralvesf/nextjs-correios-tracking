@@ -36,7 +36,16 @@ export default function Home() {
       <div className="flex justify-center items-center flex-col w-11/12 lg:w-3/5 xl:w-3/6">
         <Head>
           <title>Rastreie sua encomenda</title>
+          <meta name="language" content="pt-br" />
+          <meta charSet="utf-8" />
           <link rel="icon" href="/favicon.svg" />
+          <meta name="title" content="Rastreio Correios | Rastreio suas encomendas nos Correios" />
+          <meta name="description" content="Rastreie suas encomendas nos Correios de forma simples e rápida" />
+          <meta name="robots" />
+          <meta name="googlebot" />
+          <meta name="googlebot" content="notranslate" />
+          <meta name="google-site-verification" content="lFE3UhUXnv1-aDlbr2Qmf8OB721lESi49FcihsNx24A" />
+          <meta name="keywords" content="correios, rastreio, brasil, rastrear correios, encomendas, correios brasil, rastreamento, sro, tracking, api correios, correio, rastreio de pacotes, track" />
         </Head>
 
         <img
@@ -80,6 +89,6 @@ export default function Home() {
 
         <RecentSearchs />
       </div>
-    </div>
+    </div >
   )
 }
