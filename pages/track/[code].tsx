@@ -53,6 +53,8 @@ function chooseType(text: string) {
       return 'transito'
     case str.includes('saiu'):
       return 'saiu'
+    case str.includes('não entregue'):
+      return 'tentativa'
     case str.includes('entregue'):
       return 'entregue'
     case str.includes('tentativa'):
